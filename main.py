@@ -1,9 +1,8 @@
 ciphertext = "N qtaj uwtlwfrrnsl zxnsl Udymts"
-decodificated = []
 
 
 def decrypt(ciphertext, key):
-
+    decodificated = ""
     alphabet = [
         "a",
         "b",
@@ -36,7 +35,12 @@ def decrypt(ciphertext, key):
     for letter in ciphertext:
         if letter in alphabet:
             position = alphabet.index(letter)
-            print(position)
+            letter_dc = alphabet[position + key % len(alphabet)]
+            decodificated += letter_dc
+        else:
+            decodificated += " "
+
+    print(decodificated)
 
 
 decrypt(ciphertext, 5)
