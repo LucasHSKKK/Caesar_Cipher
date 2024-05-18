@@ -1,4 +1,4 @@
-ciphertext = "N qtaj uwtlwfrrnsl zxnsl Udymts"
+ciphertext = "Dtz ini f ltti otg"
 
 
 def decrypt(ciphertext, key):
@@ -31,16 +31,20 @@ def decrypt(ciphertext, key):
         "y",
         "z",
     ]
-    ciphertext = ciphertext.lower()
+    alphabet_upper = [letter_lower.upper() for letter_lower in alphabet]
     for letter in ciphertext:
         if letter in alphabet:
             position = alphabet.index(letter)
-            letter_dc = alphabet[position + key % len(alphabet)]
-            decodificated += letter_dc
+            letter_dc = (position + key) % len(alphabet)
+            decodificated += alphabet[letter_dc]
+        elif letter in alphabet_upper:
+            position = alphabet_upper.index(letter)
+            letter_dc = (position + key) % len(alphabet_upper)
+            decodificated += alphabet_upper[letter_dc]
         else:
             decodificated += " "
 
     print(decodificated)
 
 
-decrypt(ciphertext, 5)
+decrypt(ciphertext, -5)
