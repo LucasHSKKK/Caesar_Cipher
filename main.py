@@ -31,8 +31,10 @@ def decrypt(ciphertext, key):
         "y",
         "z",
     ]
+    # the list in upper case
     alphabet_upper = [letter_lower.upper() for letter_lower in alphabet]
     for letter in ciphertext:
+        # if-elif-else to find the new position
         if letter in alphabet:
             position = alphabet.index(letter)
             letter_dc = (position + key) % len(alphabet)
